@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { RiHomeFill } from 'react-icons/ri'
 import { IoIosArrowForward, IoMdAdd } from 'react-icons/io'
 import { categories } from '../utils/data'
@@ -22,6 +22,7 @@ const Sidebar = ({user,closeToggle}) => {
     if(closeToggle) closeToggle(false)
   }
 
+  const navigate = useNavigate()
   return (
     <div className="flex flex-col justify-between bg-white h-full overflow-y-scroll min-w-210 scrollbar">
       <div className="flex flex-col">
@@ -53,7 +54,11 @@ const Sidebar = ({user,closeToggle}) => {
               Create
             </NavLink>
             <NavLink
-              onClick={handleCloseSidebar}
+              onClick={()=>{
+                handleCloseSidebar()
+                localStorage.clear()
+                navigate('/login')
+              }}
               to="/login"
               className={({isActive})=>isActive?isActiveStyle:isNotActiveStyle}
             >
