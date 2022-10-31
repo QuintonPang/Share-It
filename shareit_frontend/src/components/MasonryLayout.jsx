@@ -9,7 +9,7 @@ const breakpointObj = {
   3000: 6,
   2000: 5,
   1200: 3,
-  1000: 1, // mpbile device
+  1000: 1, // mobile device
 }
 
 const MasonryLayout = ({pins}) => {
